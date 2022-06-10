@@ -1,6 +1,8 @@
 import styles from "./Progress.module.css";
+
 const Progress = ({ foundWords }) => {
   const wordLengths = ["Four", "Five", "Six", "Seven", "Eight", "Nine"];
+  //TODO: refactor to display as a table
   return (
     <div className={styles.progress}>
       <p>Progress:</p>
