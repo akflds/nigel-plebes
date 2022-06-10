@@ -3,7 +3,31 @@ import Scoreboard from "./Scoreboard";
 import LetterGrid from "./LetterGrid";
 
 const Gameboard = ({ gameWord }) => {
-  const [foundWords, setFoundWords] = useState([]);
+  const [foundWords, setFoundWords] = useState([
+    "case",
+    "cars",
+    "care",
+    "cafe",
+    "ceca",
+    "race",
+    "rise",
+    "rice",
+    "ears",
+    "eras",
+    "safer",
+    "cares",
+    "cafes",
+    "cries",
+    "fares",
+    "fairs",
+    "fries",
+    "fires",
+    "fears",
+    "scarce",
+    "farces",
+    "fairies",
+    "sacrifice",
+  ]);
   const [showProgress, setShowProgress] = useState(false);
 
   return (

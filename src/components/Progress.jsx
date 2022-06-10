@@ -7,10 +7,6 @@ const Progress = ({ foundWords }) => {
     <div className={styles.progress}>
       <p>Progress:</p>
       <ul>
-        <li>
-          <p>Word length</p>
-          <p>Count</p>
-        </li>
         {wordLengths.map((len, i) => {
           return (
             <li key={len}>
@@ -20,7 +16,7 @@ const Progress = ({ foundWords }) => {
           );
         })}
       </ul>
-      <div className={styles.foundWords}>
+      <div className={styles.words}>
         <p>Words:</p>
         <ul>
           {foundWords.map((word) => {
