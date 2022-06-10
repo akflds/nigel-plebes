@@ -10,10 +10,13 @@ function App() {
   // game state
   const [gameWord] = useState(words[0]); // hardcoded with "sacrifice" for now
 
+  // game modes
+  const [easyMode, setEasyMode] = useState(true);
+  const [fixedLetter, setFixedLetter] = useState(false);
+
   // display states
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [easyMode, setEasyMode] = useState(true);
 
   return (
     <div className="App">
@@ -26,7 +29,12 @@ function App() {
       {showLeaderboard ? (
         <Leaderboard />
       ) : showSettings ? (
-        <Settings easyMode={easyMode} setEasyMode={setEasyMode} />
+        <Settings
+          easyMode={easyMode}
+          setEasyMode={setEasyMode}
+          fixedLetter={fixedLetter}
+          setFixedLetter={setFixedLetter}
+        />
       ) : (
         <Gameboard gameWord={gameWord} easyMode={easyMode} />
       )}

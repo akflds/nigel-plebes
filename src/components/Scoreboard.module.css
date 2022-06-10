@@ -13,6 +13,19 @@
 }
 
 .scoreboardContainer button {
-  padding: 0.5rem;
-  font-weight: bold;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  margin: 0 0.5rem;
+  transition: all 0.4s ease;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }

@@ -16,13 +16,11 @@ const Scoreboard = ({
           {foundWords.length} / {gameWord.subWords.length}
         </p>
         <button
-          className={showProgress ? styles.clicked : null}
+          className={showProgress ? styles.up : styles.down}
           onClick={() => {
             setShowProgress(!showProgress);
           }}
-        >
-          {showProgress ? "▲" : "▼"}
-        </button>
+        ></button>
       </div>
 
       {showProgress ? (
