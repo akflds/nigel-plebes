@@ -3,8 +3,6 @@
   padding: 0;
 }
 
-/* TODO: update once table */
-
 .progress {
   display: flex;
   flex-direction: column;
