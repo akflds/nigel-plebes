@@ -2,7 +2,7 @@ import { useState } from "react";
 import Scoreboard from "./Scoreboard";
 import LetterGrid from "./LetterGrid";
 
-const Gameboard = ({ gameWord }) => {
+const Gameboard = ({ gameWord, easyMode }) => {
   const [foundWords, setFoundWords] = useState([
     "case",
     "cars",
@@ -33,6 +33,7 @@ const Gameboard = ({ gameWord }) => {
   return (
     <>
       <Scoreboard
+        easyMode={easyMode}
         gameWord={gameWord}
         foundWords={foundWords}
         showProgress={showProgress}

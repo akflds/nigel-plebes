@@ -13,6 +13,7 @@ function App() {
   // display states
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [easyMode, setEasyMode] = useState(true);
 
   return (
     <div className="App">
@@ -25,9 +26,9 @@ function App() {
       {showLeaderboard ? (
         <Leaderboard />
       ) : showSettings ? (
-        <Settings />
+        <Settings easyMode={easyMode} setEasyMode={setEasyMode} />
       ) : (
-        <Gameboard gameWord={gameWord} />
+        <Gameboard gameWord={gameWord} easyMode={easyMode} />
       )}
     </div>
   );

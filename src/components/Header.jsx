@@ -9,7 +9,7 @@ const Header = ({
   return (
     <header className={styles.header}>
       <div className={styles.headerLeft}>
-        <h1>Spelling bee</h1>
+        <h1>GANARAM</h1>
       </div>
       <div className={styles.headerRight}>
         <button

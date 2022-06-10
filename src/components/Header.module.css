@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 0.5rem;
+  padding: 0.5rem;
   border-bottom: 2px solid black;
 }
 
@@ -24,7 +24,7 @@ button {
   background-color: white;
 }
 .clicked {
-  background-color: #f7da21;
+  background-color: lightcyan;
 }
 
 @media screen and (min-width: 600px) {
