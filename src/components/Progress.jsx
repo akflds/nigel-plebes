@@ -1,9 +1,14 @@
+import styles from "./Progress.module.css";
 const Progress = ({ foundWords }) => {
   const wordLengths = ["Four", "Five", "Six", "Seven", "Eight", "Nine"];
   return (
-    <div className="progress">
+    <div className={styles.progress}>
       <p>Progress:</p>
       <ul>
+        <li>
+          <p>Word length</p>
+          <p>Count</p>
+        </li>
         {wordLengths.map((len, i) => {
           return (
             <li key={len}>
@@ -13,7 +18,7 @@ const Progress = ({ foundWords }) => {
           );
         })}
       </ul>
-      <div className="progress-wordlist">
+      <div className={styles.foundWords}>
         <p>Words:</p>
         <ul>
           {foundWords.map((word) => {
