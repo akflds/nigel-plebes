@@ -13,9 +13,9 @@ const Scoreboard = ({
     <>
       <div className={styles.scoreboardContainer}>
         <p id={styles.score}>
-          {`You've found ${foundWords.length} ${
-            easyMode ? `/ ${gameWord.subWords.length}` : ""
-          } words!`}
+          {`Found: ${Math.round(
+            (foundWords.length / gameWord.subWords.length) * 100
+          )}%`}
         </p>
         <button
           className={showProgress ? styles.clicked : null}
@@ -23,7 +23,7 @@ const Scoreboard = ({
             setShowProgress(!showProgress);
           }}
         >
-          {showProgress ? "Hide score" : "Show score"}
+          Your words
         </button>
       </div>
 
