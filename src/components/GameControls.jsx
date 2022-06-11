@@ -15,7 +15,9 @@ const GameControls = ({
       >
         Clear
       </button>
-      <button onClick={() => {}}>Shuffle</button>
+      <button disabled onClick={() => {}}>
+        Shuffle
+      </button>
       <button
         onClick={() => {
           if (
