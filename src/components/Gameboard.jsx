@@ -2,33 +2,14 @@ import { useState } from "react";
 import Scoreboard from "./Scoreboard";
 import Game from "./Game";
 
-const Gameboard = ({ fixedLetter, gameWord, easyMode }) => {
-  // for testing
-  const [foundWords, setFoundWords] = useState([
-    "case",
-    "cars",
-    "care",
-    "cafe",
-    "ceca",
-    "race",
-    "rise",
-    "rice",
-    "ears",
-    "eras",
-    "safer",
-    "cares",
-    "cafes",
-    "cries",
-    "fares",
-    "fairs",
-    "fries",
-    "fires",
-    "fears",
-    "scarce",
-    "farces",
-    "fairies",
-    "sacrifice",
-  ]);
+const Gameboard = ({
+  foundWords,
+  setFoundWords,
+  fixedLetter,
+  gameWord,
+  easyMode,
+  setPlaying,
+}) => {
   const [showProgress, setShowProgress] = useState(false);
 
   return (
@@ -42,8 +23,10 @@ const Gameboard = ({ fixedLetter, gameWord, easyMode }) => {
       />
       {showProgress ? null : (
         <Game
+          setPlaying={setPlaying}
           fixedLetter={fixedLetter}
           gameWord={gameWord}
+          foundWords={foundWords}
           setFoundWords={setFoundWords}
         />
       )}

@@ -4,11 +4,14 @@ import Leaderboard from "./components/Leaderboard";
 import Settings from "./components/Settings";
 import Gameboard from "./components/Gameboard";
 import "./App.css";
-import words from "./data/word"; //hardcoded for now
+
+import words from "./data/allWords.min";
 
 function App() {
   // game state
-  const [gameWord] = useState(words[0]); // hardcoded with "sacrifice" for now
+  const [gameWord] = useState(words[Math.floor(Math.random() * words.length)]);
+  const [foundWords, setFoundWords] = useState([]);
+  const [playing, setPlaying] = useState(false);
 
   // game modes
   const [easyMode, setEasyMode] = useState(true);
@@ -30,6 +33,7 @@ function App() {
         <Leaderboard />
       ) : showSettings ? (
         <Settings
+          playing={playing}
           easyMode={easyMode}
           setEasyMode={setEasyMode}
           fixedLetter={fixedLetter}
@@ -37,6 +41,9 @@ function App() {
         />
       ) : (
         <Gameboard
+          setPlaying={setPlaying}
+          foundWords={foundWords}
+          setFoundWords={setFoundWords}
           fixedLetter={fixedLetter}
           gameWord={gameWord}
           easyMode={easyMode}

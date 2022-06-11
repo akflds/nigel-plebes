@@ -1,14 +1,39 @@
+import { useState } from "react";
 import styles from "./Settings.module.css";
-const Settings = ({ easyMode, setEasyMode, fixedLetter, setFixedLetter }) => {
+const Settings = ({
+  playing,
+  easyMode,
+  setEasyMode,
+  fixedLetter,
+  setFixedLetter,
+}) => {
+  const [isError, setIsError] = useState(false);
+
+  const handleChange = (setState) => {
+    if (playing) {
+      setIsError(true);
+      setTimeout(() => setIsError(false), 4000);
+    } else {
+      setState((curr) => !curr);
+    }
+  };
+
   return (
     <div className={styles.settings}>
       <h2>Settings</h2>
+      {isError ? (
+        <p className={styles.error}>
+          You can only change this at the start of a round.
+        </p>
+      ) : null}
       <div className={styles.setting}>
         <p>Easy mode</p>
         <label className={styles.switch}>
           <input
             className={styles.input}
-            onChange={() => setEasyMode((curr) => !curr)}
+            onChange={() => {
+              handleChange(setEasyMode);
+            }}
             type="checkbox"
             checked={easyMode}
           />
@@ -20,7 +45,9 @@ const Settings = ({ easyMode, setEasyMode, fixedLetter, setFixedLetter }) => {
         <label className={styles.switch}>
           <input
             className={styles.input}
-            onChange={() => setFixedLetter((curr) => !curr)}
+            onChange={() => {
+              handleChange(setFixedLetter);
+            }}
             type="checkbox"
             checked={fixedLetter}
           />

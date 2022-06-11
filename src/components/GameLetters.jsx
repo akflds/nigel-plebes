@@ -1,10 +1,19 @@
+import { useEffect, useState } from "react";
 import styles from "./GameLetters.module.css";
 
-const GameLetters = ({ letters, setGuess }) => {
+const GameLetters = ({ letters, guess, setGuess, setPlaying }) => {
+  const [buttonStatus, setButtonStatus] = useState([]);
+
+  useEffect(() => {
+    if (guess.length === 0) {
+      setButtonStatus([]);
+    }
+  }, [guess]);
   const handleClick = (letter) => {
     setGuess((curr) => {
       return curr.length < 9 ? [...curr, letter] : [...curr];
     });
+    setPlaying(true);
   };
 
   return (
@@ -13,7 +22,12 @@ const GameLetters = ({ letters, setGuess }) => {
         return (
           <button
             key={index}
-            onClick={() => {
+            disabled={buttonStatus[index]}
+            onClick={(e) => {
+              setButtonStatus((curr) => {
+                curr[index] = true;
+                return curr;
+              });
               handleClick(letter);
             }}
           >

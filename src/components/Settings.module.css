@@ -3,6 +3,14 @@
   text-align: center;
 }
 
+.error {
+  text-align: center;
+  padding: 0.5rem;
+  background-color: lightcoral;
+  color: white;
+  font-weight: bold;
+}
+
 .setting {
   display: flex;
   flex-direction: row;
