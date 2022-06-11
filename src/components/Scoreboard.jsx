@@ -13,7 +13,9 @@ const Scoreboard = ({
     <>
       <div className={styles.scoreboardContainer}>
         <p id={styles.score}>
-          {foundWords.length} / {gameWord.subWords.length}
+          {`You've found ${foundWords.length} ${
+            easyMode ? `/ ${gameWord.subWords.length}` : ""
+          } words!`}
         </p>
         <button
           className={showProgress ? styles.clicked : null}
