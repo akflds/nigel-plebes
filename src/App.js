@@ -36,7 +36,11 @@ function App() {
           setFixedLetter={setFixedLetter}
         />
       ) : (
-        <Gameboard gameWord={gameWord} easyMode={easyMode} />
+        <Gameboard
+          fixedLetter={fixedLetter}
+          gameWord={gameWord}
+          easyMode={easyMode}
+        />
       )}
     </div>
   );

@@ -1,0 +1,23 @@
+.guess {
+  font-size: 3rem;
+  text-transform: uppercase;
+  min-height: 60px;
+  padding: 0.5rem;
+}
+
+.bad-guess {
+  border: 0.5rem solid red;
+}
+
+@keyframes cursor-blink {
+  0% {
+    opacity: 0;
+  }
+}
+
+.blinky::after {
+  content: "_";
+  color: darkmagenta;
+  display: inline-block;
+  animation: cursor-blink 1.5s steps(2) infinite;
+}

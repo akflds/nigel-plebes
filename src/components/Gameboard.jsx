@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Scoreboard from "./Scoreboard";
-import LetterGrid from "./LetterGrid";
+import Game from "./Game";
 
-const Gameboard = ({ gameWord, easyMode }) => {
+const Gameboard = ({ fixedLetter, gameWord, easyMode }) => {
   // for testing
   const [foundWords, setFoundWords] = useState([
     "case",
@@ -41,7 +41,11 @@ const Gameboard = ({ gameWord, easyMode }) => {
         setShowProgress={setShowProgress}
       />
       {showProgress ? null : (
-        <LetterGrid gameWord={gameWord} setFoundWords={setFoundWords} />
+        <Game
+          fixedLetter={fixedLetter}
+          gameWord={gameWord}
+          setFoundWords={setFoundWords}
+        />
       )}
     </>
   );
