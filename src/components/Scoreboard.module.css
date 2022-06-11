@@ -13,6 +13,16 @@
 }
 
 .scoreboardContainer button {
+  border: 2px solid black;
+}
+
+.clicked {
+  background-color: lightcyan;
+}
+
+/* arrow button style
+
+.scoreboardContainer button {
   border: solid black;
   border-width: 0 2px 2px 0;
   display: inline-block;
@@ -28,4 +38,4 @@
 .down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
-}
+} */

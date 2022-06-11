@@ -1,6 +1,6 @@
 import styles from "./Progress.module.css";
 
-const Progress = ({ foundWords, easyMode }) => {
+const Progress = ({ gameWord, foundWords, easyMode }) => {
   const wordLengths = [
     "Four",
     "Five",
@@ -20,9 +20,6 @@ const Progress = ({ foundWords, easyMode }) => {
             <tr>
               <th className={styles.progressTableCell}>Length</th>
               <th className={styles.progressTableCell}>Found</th>
-              {easyMode ? (
-                <th className={styles.progressTableCell}>Remaining</th>
-              ) : null}
             </tr>
           </thead>
 
@@ -34,15 +31,18 @@ const Progress = ({ foundWords, easyMode }) => {
                   <td
                     className={`${styles.progressTableCell} ${styles.centerCell}`}
                   >
-                    {foundWords.filter((word) => word.length === 9 - i).length}
+                    {`${
+                      foundWords.filter((word) => word.length === 9 - i).length
+                    } ${
+                      easyMode
+                        ? `/ ${
+                            gameWord.subWords.filter(
+                              (word) => word.length === 9 - i
+                            ).length
+                          }`
+                        : ""
+                    }`}
                   </td>
-                  {easyMode ? (
-                    <td
-                      className={`${styles.progressTableCell} ${styles.centerCell}`}
-                    >
-                      ?
-                    </td>
-                  ) : null}
                 </tr>
               );
             })}

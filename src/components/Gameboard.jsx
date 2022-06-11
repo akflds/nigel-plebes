@@ -3,6 +3,7 @@ import Scoreboard from "./Scoreboard";
 import LetterGrid from "./LetterGrid";
 
 const Gameboard = ({ gameWord, easyMode }) => {
+  // for testing
   const [foundWords, setFoundWords] = useState([
     "case",
     "cars",
