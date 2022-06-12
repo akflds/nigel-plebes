@@ -6,12 +6,21 @@ import Won from "./Won";
 import words from "../data/allWords.min.js";
 
 const Gameboard = ({ fixedLetter, easyMode, playing, setPlaying }) => {
-  const [won, setWon] = useState(false);
+  const getRandomWord = () => {
+    return words[Math.floor(Math.random() * words.length)];
+  };
+
+  // game state and values
+  const [won, setWon] = useState(
+    localStorage.getItem("won")
+      ? JSON.parse(localStorage.getItem("won"))
+      : false
+  );
 
   const [gameWord, setGameWord] = useState(
     localStorage.getItem("gameWord")
       ? JSON.parse(localStorage.getItem("gameWord"))
-      : words[Math.floor(Math.random() * words.length)]
+      : getRandomWord()
   );
 
   const [foundWords, setFoundWords] = useState(
@@ -33,17 +42,25 @@ const Gameboard = ({ fixedLetter, easyMode, playing, setPlaying }) => {
     localStorage.setItem("foundWords", JSON.stringify(foundWords));
   }, [foundWords]);
 
+  useEffect(() => {
+    localStorage.removeItem("won");
+    localStorage.setItem("won", won);
+  }, [won]);
+
   // reset game
   useEffect(() => {
     localStorage.setItem("playing", playing);
     if (playing === false) {
-      setGameWord(words[Math.floor(Math.random() * words.length)]);
+      setGameWord(getRandomWord());
       setFoundWords([]);
     }
   }, [playing]);
 
+  // display congrats if won
   if (won)
     return <Won gameWord={gameWord} setWon={setWon} setPlaying={setPlaying} />;
+
+  // else display game
   return (
     <>
       <Scoreboard
