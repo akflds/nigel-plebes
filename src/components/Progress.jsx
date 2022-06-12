@@ -10,7 +10,7 @@ const Progress = ({ gameWord, foundWords, easyMode }) => {
     "Nine",
   ].reverse();
 
-  // TODO: separate components
+  // TODO: separate into components
   return (
     <>
       <div className={styles.progress}>

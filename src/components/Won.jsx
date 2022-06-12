@@ -2,8 +2,8 @@ import styles from "./Won.module.css";
 
 const Won = ({ gameWord, setPlaying, setWon }) => {
   const handleRestart = () => {
-    setPlaying(false);
     setWon(false);
+    setPlaying(false);
   };
 
   return (

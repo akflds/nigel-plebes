@@ -4,6 +4,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .won .congrats {
@@ -27,4 +37,11 @@
   background-color: white;
   padding: 1rem;
   font-size: 2rem;
+  transition: all 0.5s;
+}
+
+.won button:active,
+.won button:hover {
+  background-color: lightcyan;
+  color: black;
 }

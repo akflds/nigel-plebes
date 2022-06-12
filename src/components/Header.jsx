@@ -1,6 +1,7 @@
 import styles from "./Header.module.css";
 
 const Header = ({ showStats, setShowStats, showSettings, setShowSettings }) => {
+  // TODO: separate into components
   return (
     <header className={styles.header}>
       <div className={styles.headerLeft}>
