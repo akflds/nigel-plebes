@@ -1,3 +1,4 @@
+import shuffle from "../utils/shuffle";
 import styles from "./GameControls.module.css";
 const GameControls = ({
   guess,
@@ -6,6 +7,8 @@ const GameControls = ({
   setFoundWords,
   gameWord,
   setWon,
+  setLetters,
+  fixedLetter,
 }) => {
   return (
     <div className={styles.gameControls}>
@@ -16,7 +19,11 @@ const GameControls = ({
       >
         Clear
       </button>
-      <button disabled onClick={() => {}}>
+      <button
+        onClick={() => {
+          setLetters(shuffle(gameWord.word.split(""), fixedLetter));
+        }}
+      >
         Shuffle
       </button>
       <button

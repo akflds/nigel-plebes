@@ -3,6 +3,7 @@ import styles from "./Game.module.css";
 import GameGuess from "./GameGuess";
 import GameLetters from "./GameLetters";
 import GameControls from "./GameControls";
+import shuffle from "../utils/shuffle";
 
 const Game = ({
   fixedLetter,
@@ -15,9 +16,10 @@ const Game = ({
   const [guess, setGuess] = useState([]);
   const [letters, setLetters] = useState([]);
 
+  // initial letter shuffle
   useEffect(() => {
-    setLetters(gameWord.word.split(""));
-  }, [gameWord]);
+    setLetters(shuffle(gameWord.word.split(""), fixedLetter));
+  }, [gameWord, fixedLetter]);
 
   return (
     <div className={styles.gameContainer}>

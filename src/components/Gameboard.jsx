@@ -60,7 +60,6 @@ const Gameboard = ({ fixedLetter, easyMode, playing, setPlaying }) => {
   if (won)
     return <Won gameWord={gameWord} setWon={setWon} setPlaying={setPlaying} />;
 
-  // else display game
   return (
     <>
       <Scoreboard
