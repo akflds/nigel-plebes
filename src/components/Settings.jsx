@@ -1,17 +1,20 @@
 import { useState } from "react";
 import styles from "./Settings.module.css";
 const Settings = ({
-  setPlaying,
-  playing,
   easyMode,
   setEasyMode,
   fixedLetter,
   setFixedLetter,
+  playing,
+  setPlaying,
 }) => {
+  const [success, setSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (setState) => {
     if (playing) {
+      setErrorMessage("You can only change this at the start of a round.");
       setIsError(true);
       setTimeout(() => setIsError(false), 4000);
     } else {
@@ -20,17 +23,22 @@ const Settings = ({
   };
 
   const handleRestart = () => {
-    setPlaying(false);
+    if (!playing) {
+      setErrorMessage("Please play the game first!");
+      setIsError(true);
+      setTimeout(() => setIsError(false), 3000);
+    } else {
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 3000);
+      setPlaying(false);
+    }
   };
 
   return (
     <div className={styles.settings}>
       <h2>Settings</h2>
-      {isError ? (
-        <p className={styles.error}>
-          You can only change this at the start of a round.
-        </p>
-      ) : null}
+      {isError ? <p className={styles.error}>{errorMessage}</p> : null}
+      {success ? <p className={styles.success}>Game restarted</p> : null}
       <div className={styles.setting}>
         <p>Easy mode</p>
         <label className={styles.switch}>
@@ -61,8 +69,16 @@ const Settings = ({
       </div>
       <div className={styles.setting}>
         <p>Restart game</p>
-        <button onClick={handleRestart}>Restart</button>
+        <button className={styles.button} onClick={handleRestart}>
+          Restart
+        </button>
       </div>
+      {/* <div className={styles.setting}>
+        <p>About</p>
+        <button className={styles.button} onClick={() => {}}>
+          Show
+        </button>
+      </div> */}
     </div>
   );
 };

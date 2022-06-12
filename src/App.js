@@ -21,8 +21,12 @@ function App() {
       : []
   );
   const [playing, setPlaying] = useState(
-    localStorage.getItem("playing") ? localStorage.getItem("playing]") : false
+    localStorage.getItem("playing")
+      ? JSON.parse(localStorage.getItem("playing"))
+      : false
   );
+
+  const [won, setWon] = useState(false);
 
   // game modes
   const [easyMode, setEasyMode] = useState(true);
@@ -73,6 +77,8 @@ function App() {
         />
       ) : (
         <Gameboard
+          won={won}
+          setWon={setWon}
           setPlaying={setPlaying}
           foundWords={foundWords}
           setFoundWords={setFoundWords}

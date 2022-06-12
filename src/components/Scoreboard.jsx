@@ -1,9 +1,6 @@
 import styles from "./Scoreboard.module.css";
 
-import Progress from "./Progress";
-
 const Scoreboard = ({
-  easyMode,
   showProgress,
   setShowProgress,
   gameWord,
@@ -23,17 +20,9 @@ const Scoreboard = ({
             setShowProgress(!showProgress);
           }}
         >
-          Your words
+          {showProgress ? "Hide words" : "Show words"}
         </button>
       </div>
-
-      {showProgress ? (
-        <Progress
-          gameWord={gameWord}
-          easyMode={easyMode}
-          foundWords={foundWords}
-        />
-      ) : null}
     </>
   );
 };

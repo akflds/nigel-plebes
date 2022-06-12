@@ -4,11 +4,37 @@
 }
 
 .error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 0.5rem;
   background-color: lightcoral;
   color: white;
   font-weight: bold;
+  font-size: 1.6rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5rem;
+}
+
+.success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+  background-color: lightseagreen;
+  color: white;
+  font-weight: bold;
+  font-size: 1.6rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5rem;
 }
 
 .setting {
@@ -22,6 +48,13 @@
 
 .setting p {
   font-size: 1.6rem;
+}
+
+.button {
+  min-width: 4rem;
+  border: 2px solid black;
+  padding: 0.5rem;
+  background-color: white;
 }
 
 .switch {
