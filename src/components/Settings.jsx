@@ -38,7 +38,7 @@ const Settings = ({
     <div className={styles.settings}>
       <h2>Settings</h2>
       {isError ? <p className={styles.error}>{errorMessage}</p> : null}
-      {success ? <p className={styles.success}>Game restarted</p> : null}
+      {success ? <p className={styles.success}>Ok, good luck!</p> : null}
       <div className={styles.setting}>
         <p>Easy mode</p>
         <label className={styles.switch}>

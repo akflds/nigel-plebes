@@ -17,7 +17,20 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 5rem;
+  max-height: 5rem;
+  height: 100%;
+  animation-duration: 0.2s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 5rem;
+  }
 }
 
 .success {
@@ -34,7 +47,10 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 5rem;
+  max-height: 5rem;
+  height: 100%;
+  animation-duration: 0.3s;
+  animation-name: slidein;
 }
 
 .setting {
