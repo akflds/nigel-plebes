@@ -9,7 +9,7 @@ import words from "./data/allWords.min";
 
 function App() {
   // game state
-  const [gameWord] = useState(
+  const [gameWord, setGameWord] = useState(
     localStorage.getItem("gameWord")
       ? JSON.parse(localStorage.getItem("gameWord"))
       : words[Math.floor(Math.random() * words.length)]
@@ -20,7 +20,9 @@ function App() {
       ? JSON.parse(localStorage.getItem("foundWords"))
       : []
   );
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(
+    localStorage.getItem("playing") ? localStorage.getItem("playing]") : false
+  );
 
   // game modes
   const [easyMode, setEasyMode] = useState(true);
@@ -30,13 +32,25 @@ function App() {
   const [showStats, setShowStats] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
+  // store words and guesses in local storage
   useEffect(() => {
+    localStorage.removeItem("gameWord");
     localStorage.setItem("gameWord", JSON.stringify(gameWord));
   }, [gameWord]);
 
   useEffect(() => {
+    localStorage.removeItem("foundWords");
     localStorage.setItem("foundWords", JSON.stringify(foundWords));
   }, [foundWords]);
+
+  // reset game
+  useEffect(() => {
+    localStorage.setItem("playing", playing);
+    if (playing === false) {
+      setGameWord(words[Math.floor(Math.random() * words.length)]);
+      setFoundWords([]);
+    }
+  }, [playing]);
 
   return (
     <div className="App">
@@ -50,6 +64,7 @@ function App() {
         <Stats />
       ) : showSettings ? (
         <Settings
+          setPlaying={setPlaying}
           playing={playing}
           easyMode={easyMode}
           setEasyMode={setEasyMode}

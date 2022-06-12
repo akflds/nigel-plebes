@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./Settings.module.css";
 const Settings = ({
+  setPlaying,
   playing,
   easyMode,
   setEasyMode,
@@ -16,6 +17,10 @@ const Settings = ({
     } else {
       setState((curr) => !curr);
     }
+  };
+
+  const handleRestart = () => {
+    setPlaying(false);
   };
 
   return (
@@ -53,6 +58,10 @@ const Settings = ({
           />
           <span className={`${styles.slider} ${styles.round}`}></span>
         </label>
+      </div>
+      <div className={styles.setting}>
+        <p>Restart game</p>
+        <button onClick={handleRestart}>Restart</button>
       </div>
     </div>
   );
