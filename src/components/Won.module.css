@@ -33,8 +33,6 @@
 }
 
 .won button {
-  border: 2px solid black;
-  background-color: white;
   padding: 1rem;
   font-size: 2rem;
   transition: all 0.5s;
@@ -42,6 +40,5 @@
 
 .won button:active,
 .won button:hover {
-  background-color: lightcyan;
-  color: black;
+  background-color: var(--clicked);
 }

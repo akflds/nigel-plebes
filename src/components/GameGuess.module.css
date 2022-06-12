@@ -13,11 +13,15 @@
   0% {
     opacity: 0;
   }
+  100% {
+    opacity: 1;
+  }
 }
 
 .blinky::after {
-  content: "_";
-  color: darkmagenta;
+  content: "|";
+  font-weight: bold;
+  color: var(--cursor);
   display: inline-block;
   animation: cursor-blink 1.5s steps(2) infinite;
 }

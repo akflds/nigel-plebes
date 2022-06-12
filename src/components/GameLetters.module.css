@@ -17,15 +17,11 @@
 
 .letterGrid button {
   font-size: 4rem;
-  padding: 0.5rem;
-  border: 2px solid black;
-  background-color: white;
   min-width: 6rem;
   text-transform: uppercase;
   transition: all 0.5s;
 }
 
 .letterGrid button:disabled {
-  background-color: lightpink;
-  color: black;
+  background-color: var(--disabled);
 }

@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styles from "./Settings.module.css";
+import getRandomWord from "../utils/getRandomWord";
+
 const Settings = ({
   easyMode,
   setEasyMode,
@@ -7,6 +9,11 @@ const Settings = ({
   setFixedLetter,
   playing,
   setPlaying,
+  theme,
+  setTheme,
+  setWon,
+  setGameWord,
+  setFoundWords,
 }) => {
   const [success, setSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -23,6 +30,7 @@ const Settings = ({
   };
 
   const handleRestart = () => {
+    console.log("settings restart");
     if (!playing) {
       setErrorMessage("Please play the game first!");
       setIsError(true);
@@ -30,6 +38,9 @@ const Settings = ({
     } else {
       setSuccess(true);
       setTimeout(() => setSuccess(false), 3000);
+      setGameWord(getRandomWord());
+      setFoundWords([]);
+      setWon(false);
       setPlaying(false);
     }
   };
@@ -68,8 +79,27 @@ const Settings = ({
         </label>
       </div>
       <div className={styles.setting}>
+        <p>Dark mode</p>
+        <label className={styles.switch}>
+          <input
+            className={styles.input}
+            onChange={() => {
+              setTheme(theme === "light" ? "dark" : "light");
+            }}
+            type="checkbox"
+            checked={theme === "dark"}
+          />
+          <span className={`${styles.slider} ${styles.round}`}></span>
+        </label>
+      </div>
+      <div className={styles.setting}>
         <p>Restart game</p>
-        <button className={styles.button} onClick={handleRestart}>
+        <button
+          className={styles.button}
+          onClick={() => {
+            handleRestart();
+          }}
+        >
           Restart
         </button>
       </div>

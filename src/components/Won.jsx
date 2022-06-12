@@ -1,7 +1,10 @@
 import styles from "./Won.module.css";
+import getRandomWord from "../utils/getRandomWord";
 
-const Won = ({ gameWord, setPlaying, setWon }) => {
+const Won = ({ gameWord, setGameWord, setFoundWords, setPlaying, setWon }) => {
   const handleRestart = () => {
+    setGameWord(getRandomWord());
+    setFoundWords([]);
     setWon(false);
     setPlaying(false);
   };

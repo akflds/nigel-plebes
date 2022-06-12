@@ -1,7 +1,47 @@
+:root {
+  --bg: white;
+  --text: black;
+  --border-colour: black;
+  --border-second: gray;
+  --clicked: lightcyan;
+  --disabled: lightpink;
+  --cursor: darkmagenta;
+}
+
+[data-theme="dark"] {
+  --bg: black;
+  --text: white;
+  --border-colour: white;
+  --border-second: gray;
+  --cursor: magenta;
+  --clicked: teal;
+}
+
 html,
 body,
 #root {
   height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+button,
+li,
+td,
+th {
+  color: var(--text);
+}
+
+button {
+  font-size: 1rem;
+  border: 2px solid var(--border-colour);
+  background-color: var(--bg);
+  padding: 0.5rem;
 }
 
 body {

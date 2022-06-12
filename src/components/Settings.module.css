@@ -68,9 +68,6 @@
 
 .button {
   min-width: 4rem;
-  border: 2px solid black;
-  padding: 0.5rem;
-  background-color: white;
 }
 
 .switch {
