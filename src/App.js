@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
-import Leaderboard from "./components/Leaderboard";
+import Stats from "./components/Stats";
 import Settings from "./components/Settings";
 import Gameboard from "./components/Gameboard";
 import "./App.css";
@@ -27,7 +27,7 @@ function App() {
   const [fixedLetter, setFixedLetter] = useState(false);
 
   // display states
-  const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [showStats, setShowStats] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
@@ -41,13 +41,13 @@ function App() {
   return (
     <div className="App">
       <Header
-        showLeaderboard={showLeaderboard}
+        showStats={showStats}
         showSettings={showSettings}
-        setShowLeaderboard={setShowLeaderboard}
+        setShowStats={setShowStats}
         setShowSettings={setShowSettings}
       />
-      {showLeaderboard ? (
-        <Leaderboard />
+      {showStats ? (
+        <Stats />
       ) : showSettings ? (
         <Settings
           playing={playing}

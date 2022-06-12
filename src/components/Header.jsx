@@ -1,11 +1,6 @@
 import styles from "./Header.module.css";
 
-const Header = ({
-  showLeaderboard,
-  setShowLeaderboard,
-  showSettings,
-  setShowSettings,
-}) => {
+const Header = ({ showStats, setShowStats, showSettings, setShowSettings }) => {
   return (
     <header className={styles.header}>
       <div className={styles.headerLeft}>
@@ -13,19 +8,19 @@ const Header = ({
       </div>
       <div className={styles.headerRight}>
         <button
-          className={showLeaderboard ? styles.clicked : ""}
+          className={showStats ? styles.clicked : ""}
           onClick={() => {
-            setShowLeaderboard((curr) => !curr);
+            setShowStats((curr) => !curr);
             setShowSettings(false);
           }}
         >
-          Leaderboard
+          Stats
         </button>
         <button
           className={showSettings ? styles.clicked : ""}
           onClick={() => {
             setShowSettings((curr) => !curr);
-            setShowLeaderboard(false);
+            setShowStats(false);
           }}
         >
           Settings
