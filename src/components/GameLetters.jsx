@@ -9,6 +9,7 @@ const GameLetters = ({ letters, guess, setGuess, setPlaying }) => {
       setButtonStatus([]);
     }
   }, [guess]);
+
   const handleClick = (letter) => {
     setGuess((curr) => {
       return curr.length < 9 ? [...curr, letter] : [...curr];

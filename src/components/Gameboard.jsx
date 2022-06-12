@@ -16,7 +16,8 @@ const Gameboard = ({
 }) => {
   const [showProgress, setShowProgress] = useState(false);
 
-  if (won) return <Won gameWord={gameWord} />;
+  if (won)
+    return <Won gameWord={gameWord} setWon={setWon} setPlaying={setPlaying} />;
   return (
     <>
       <Scoreboard

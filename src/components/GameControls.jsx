@@ -5,6 +5,7 @@ const GameControls = ({
   foundWords,
   setFoundWords,
   gameWord,
+  setWon,
 }) => {
   return (
     <div className={styles.gameControls}>
@@ -25,6 +26,9 @@ const GameControls = ({
             !foundWords.includes(guess.join(""))
           ) {
             setFoundWords((curr) => [...curr, guess.join("")]);
+            if (guess.join("") === gameWord.word) {
+              setWon(true);
+            }
             setGuess([]);
           }
         }}

@@ -3,6 +3,16 @@
   gap: 0.5rem;
   grid-template-columns: repeat(3, 1fr);
   padding: 0 0.5rem;
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .letterGrid button {

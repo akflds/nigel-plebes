@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Game.module.css";
 import GameGuess from "./GameGuess";
 import GameLetters from "./GameLetters";
@@ -10,9 +10,14 @@ const Game = ({
   foundWords,
   setFoundWords,
   setPlaying,
+  setWon,
 }) => {
   const [guess, setGuess] = useState([]);
-  const [letters, setLetters] = useState(gameWord.word.split(""));
+  const [letters, setLetters] = useState([]);
+
+  useEffect(() => {
+    setLetters(gameWord.word.split(""));
+  }, [gameWord]);
 
   return (
     <div className={styles.gameContainer}>
@@ -31,6 +36,7 @@ const Game = ({
         setGuess={setGuess}
         setLetters={setLetters}
         fixedLetter={fixedLetter}
+        setWon={setWon}
       />
     </div>
   );

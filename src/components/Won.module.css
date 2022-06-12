@@ -1,0 +1,30 @@
+.won {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.won .congrats {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.won .gameWord {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.won .gameWord .word {
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
+.won button {
+  border: 2px solid black;
+  background-color: white;
+  padding: 1rem;
+  font-size: 2rem;
+}
