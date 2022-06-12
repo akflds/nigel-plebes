@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Leaderboard from "./components/Leaderboard";
 import Settings from "./components/Settings";
@@ -9,8 +9,17 @@ import words from "./data/allWords.min";
 
 function App() {
   // game state
-  const [gameWord] = useState(words[Math.floor(Math.random() * words.length)]);
-  const [foundWords, setFoundWords] = useState([]);
+  const [gameWord] = useState(
+    localStorage.getItem("gameWord")
+      ? JSON.parse(localStorage.getItem("gameWord"))
+      : words[Math.floor(Math.random() * words.length)]
+  );
+
+  const [foundWords, setFoundWords] = useState(
+    localStorage.getItem("foundWords")
+      ? JSON.parse(localStorage.getItem("foundWords"))
+      : []
+  );
   const [playing, setPlaying] = useState(false);
 
   // game modes
@@ -20,6 +29,14 @@ function App() {
   // display states
   const [showLeaderboard, setShowLeaderboard] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("gameWord", JSON.stringify(gameWord));
+  }, [gameWord]);
+
+  useEffect(() => {
+    localStorage.setItem("foundWords", JSON.stringify(foundWords));
+  }, [foundWords]);
 
   return (
     <div className="App">
