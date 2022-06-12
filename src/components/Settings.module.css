@@ -35,14 +35,14 @@
 
 .success {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 0.5rem;
   background-color: lightseagreen;
-  color: white;
   font-weight: bold;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -51,6 +51,14 @@
   height: 100%;
   animation-duration: 0.3s;
   animation-name: slidein;
+}
+
+.success p {
+  color: white;
+}
+
+.word {
+  text-transform: uppercase;
 }
 
 .setting {
@@ -128,4 +136,13 @@
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.confirm {
+  background-color: lightcoral;
+}
+
+.confirm p {
+  color: white;
+  font-weight: bold;
 }

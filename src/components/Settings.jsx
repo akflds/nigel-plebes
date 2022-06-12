@@ -12,16 +12,20 @@ const Settings = ({
   theme,
   setTheme,
   setWon,
+  gameWord,
   setGameWord,
   setFoundWords,
+  setShowSettings,
 }) => {
+  const [confirm, setConfirm] = useState(false);
+  const [lastWord, setLastWord] = useState("");
   const [success, setSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (setState) => {
     if (playing) {
-      setErrorMessage("You can only change this at the start of a round.");
+      setErrorMessage("You can only change this at the start of a game.");
       setIsError(true);
       setTimeout(() => setIsError(false), 4000);
     } else {
@@ -29,31 +33,43 @@ const Settings = ({
     }
   };
 
+  const handleConfirm = () => {
+    setConfirm(true);
+    setTimeout(() => {
+      setConfirm(false);
+    }, 3000);
+  };
+
   const handleRestart = () => {
-    console.log("settings restart");
-    if (!playing) {
-      setErrorMessage("Please play the game first!");
-      setIsError(true);
-      setTimeout(() => setIsError(false), 3000);
-    } else {
-      setSuccess(true);
-      setTimeout(() => setSuccess(false), 3000);
-      setGameWord(getRandomWord());
-      setFoundWords([]);
-      setWon(false);
-      setPlaying(false);
-    }
+    setLastWord(gameWord.word);
+    setSuccess(true);
+    setTimeout(() => {
+      setSuccess(false);
+      setShowSettings(false);
+      setConfirm(false);
+    }, 1500);
+    setGameWord(getRandomWord());
+    setFoundWords([]);
+    setWon(false);
+    setPlaying(false);
   };
 
   return (
     <div className={styles.settings}>
       <h2>Settings</h2>
       {isError ? <p className={styles.error}>{errorMessage}</p> : null}
-      {success ? <p className={styles.success}>Ok, good luck!</p> : null}
+      {success ? (
+        <div className={styles.success}>
+          <p>Ok, let's reset!</p>
+          <p>The last word was:</p>
+          <p className={styles.word}>{lastWord}</p>
+        </div>
+      ) : null}
       <div className={styles.setting}>
         <p>Easy mode</p>
         <label className={styles.switch}>
           <input
+            disabled={success}
             className={styles.input}
             onChange={() => {
               handleChange(setEasyMode);
@@ -68,6 +84,7 @@ const Settings = ({
         <p>Fixed letter</p>
         <label className={styles.switch}>
           <input
+            disabled={success}
             className={styles.input}
             onChange={() => {
               handleChange(setFixedLetter);
@@ -82,6 +99,7 @@ const Settings = ({
         <p>Dark mode</p>
         <label className={styles.switch}>
           <input
+            disabled={success}
             className={styles.input}
             onChange={() => {
               setTheme(theme === "light" ? "dark" : "light");
@@ -92,15 +110,14 @@ const Settings = ({
           <span className={`${styles.slider} ${styles.round}`}></span>
         </label>
       </div>
-      <div className={styles.setting}>
-        <p>Restart game</p>
+      <div className={`${styles.setting}  ${confirm ? styles.confirm : ""}`}>
+        <p>{confirm ? "Are you sure?" : "Restart game"}</p>
         <button
-          className={styles.button}
-          onClick={() => {
-            handleRestart();
-          }}
+          disabled={success}
+          className={`${styles.button}`}
+          onClick={() => (confirm ? handleRestart() : handleConfirm())}
         >
-          Restart
+          {confirm ? "Confirm" : "Restart"}
         </button>
       </div>
       {/* <div className={styles.setting}>

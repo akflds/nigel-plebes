@@ -1,6 +1,6 @@
 import styles from "./Header.module.css";
 
-const Header = ({ showStats, setShowStats, showSettings, setShowSettings }) => {
+const Header = ({ showSettings, setShowSettings }) => {
   // TODO: separate into components
   return (
     <header className={styles.header}>
@@ -9,19 +9,9 @@ const Header = ({ showStats, setShowStats, showSettings, setShowSettings }) => {
       </div>
       <div className={styles.headerRight}>
         <button
-          className={showStats ? styles.clicked : ""}
-          onClick={() => {
-            setShowStats((curr) => !curr);
-            setShowSettings(false);
-          }}
-        >
-          Stats
-        </button>
-        <button
           className={showSettings ? styles.clicked : ""}
           onClick={() => {
             setShowSettings((curr) => !curr);
-            setShowStats(false);
           }}
         >
           Settings

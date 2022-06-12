@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
-import Stats from "./components/Stats";
 import Settings from "./components/Settings";
 import Gameboard from "./components/Gameboard";
 import "./App.css";
 import words from "./data/allWords.min.js";
+import shuffle from "./utils/shuffle";
 
 function App() {
   const getRandomWord = () => {
     return words[Math.floor(Math.random() * words.length)];
   };
+
+  const [easyMode, setEasyMode] = useState(false);
+  const [fixedLetter, setFixedLetter] = useState(false);
 
   // game state
   const [playing, setPlaying] = useState(
@@ -18,7 +21,6 @@ function App() {
       : false
   );
 
-  // game state and values
   const [gameWord, setGameWord] = useState(
     localStorage.getItem("gameWord")
       ? JSON.parse(localStorage.getItem("gameWord"))
@@ -37,13 +39,11 @@ function App() {
       : false
   );
 
-  // game modes
-  // TODO: add to localstorage
-  const [easyMode, setEasyMode] = useState(false);
-  const [fixedLetter, setFixedLetter] = useState(false);
+  const [letters, setLetters] = useState(
+    shuffle(gameWord.word.split(""), fixedLetter)
+  );
 
   // display states
-  const [showStats, setShowStats] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
 
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -82,17 +82,14 @@ function App() {
     localStorage.setItem("won", won);
   }, [won]);
 
+  useEffect(() => {
+    setLetters(shuffle(gameWord.word.split(""), fixedLetter));
+  }, [gameWord, fixedLetter]);
+
   return (
     <div className="App" data-theme={theme}>
-      <Header
-        showStats={showStats}
-        setShowStats={setShowStats}
-        showSettings={showSettings}
-        setShowSettings={setShowSettings}
-      />
-      {showStats ? (
-        <Stats />
-      ) : showSettings ? (
+      <Header showSettings={showSettings} setShowSettings={setShowSettings} />
+      {showSettings ? (
         <Settings
           setGameWord={setGameWord}
           easyMode={easyMode}
@@ -101,13 +98,17 @@ function App() {
           setFixedLetter={setFixedLetter}
           setFoundWords={setFoundWords}
           playing={playing}
+          gameWord={gameWord}
           setPlaying={setPlaying}
           theme={theme}
           setTheme={setTheme}
           setWon={setWon}
+          setShowSettings={setShowSettings}
         />
       ) : (
         <Gameboard
+          letters={letters}
+          setLetters={setLetters}
           setGameWord={setGameWord}
           gameWord={gameWord}
           foundWords={foundWords}

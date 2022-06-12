@@ -5,6 +5,8 @@ import Progress from "./Progress";
 import Won from "./Won";
 
 const Gameboard = ({
+  letters,
+  setLetters,
   fixedLetter,
   easyMode,
   setPlaying,
@@ -46,6 +48,8 @@ const Gameboard = ({
         />
       ) : (
         <Game
+          letters={letters}
+          setLetters={setLetters}
           setPlaying={setPlaying}
           fixedLetter={fixedLetter}
           gameWord={gameWord}

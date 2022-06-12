@@ -18,6 +18,10 @@
   gap: 0.5rem;
 }
 
+.header button {
+  min-width: 7rem;
+}
+
 .header .clicked {
   background-color: var(--clicked);
 }

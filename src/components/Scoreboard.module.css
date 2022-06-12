@@ -22,6 +22,10 @@
   margin: 0;
 }
 
+.scoreboardContainer button {
+  min-width: 7rem;
+}
+
 .scoreboardContainer .clicked {
   background-color: var(--clicked);
 }
