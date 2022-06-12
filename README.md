@@ -1,5 +1,9 @@
 # Spelling Bee
 
-A word guessing game, based on the [NYT version](https://www.nytimes.com/puzzles/spelling-bee).
+A word guessing game, loosely on the [NYT's Spelling Bee](https://www.nytimes.com/puzzles/spelling-bee).
 
-The project is built using React.
+The project is built using React. You can play the game here: [https://nigel-plebes.netlify.app/](https://nigel-plebes.netlify.app/)
+
+## Who's Nigel Plebes?
+
+You'll figure it out...
