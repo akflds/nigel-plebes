@@ -27,7 +27,7 @@ const Settings = ({
     if (playing) {
       setErrorMessage("You can only change this at the start of a game.");
       setIsError(true);
-      setTimeout(() => setIsError(false), 4000);
+      setTimeout(() => setIsError(false), 3000);
     } else {
       setState((curr) => !curr);
     }

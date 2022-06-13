@@ -10,3 +10,37 @@
   font-size: 1.4rem;
   padding: 1rem 0.5rem;
 }
+
+.notFound {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  padding: 0.5rem;
+  background-color: lightcoral;
+  color: white;
+  font-weight: bold;
+  font-size: 1.6rem;
+
+  max-height: 2.8rem;
+  height: 100%;
+
+  animation-duration: 0.2s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+    height: 0;
+  }
+
+  to {
+    height: 2.8rem;
+  }
+}
