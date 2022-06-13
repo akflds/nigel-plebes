@@ -80,7 +80,7 @@ const Settings = ({
           <span className={`${styles.slider} ${styles.round}`}></span>
         </label>
       </div>
-      <div className={styles.setting}>
+      {/* <div className={styles.setting}>
         <p>Fixed letter</p>
         <label className={styles.switch}>
           <input
@@ -94,7 +94,7 @@ const Settings = ({
           />
           <span className={`${styles.slider} ${styles.round}`}></span>
         </label>
-      </div>
+      </div> */}
       <div className={styles.setting}>
         <p>Dark mode</p>
         <label className={styles.switch}>
