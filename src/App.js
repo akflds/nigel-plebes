@@ -5,6 +5,7 @@ import Gameboard from "./components/Gameboard";
 import "./App.css";
 import words from "./data/allWords.min.js";
 import shuffle from "./utils/shuffle";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
   const getRandomWord = () => {
@@ -14,30 +15,10 @@ function App() {
   const [easyMode, setEasyMode] = useState(false);
   const [fixedLetter, setFixedLetter] = useState(false);
 
-  // game state
-  const [playing, setPlaying] = useState(
-    localStorage.getItem("playing")
-      ? JSON.parse(localStorage.getItem("playing"))
-      : false
-  );
-
-  const [gameWord, setGameWord] = useState(
-    localStorage.getItem("gameWord")
-      ? JSON.parse(localStorage.getItem("gameWord"))
-      : getRandomWord()
-  );
-
-  const [foundWords, setFoundWords] = useState(
-    localStorage.getItem("foundWords")
-      ? JSON.parse(localStorage.getItem("foundWords"))
-      : []
-  );
-
-  const [won, setWon] = useState(
-    localStorage.getItem("won")
-      ? JSON.parse(localStorage.getItem("won"))
-      : false
-  );
+  const [playing, setPlaying] = useLocalStorage("playing", false);
+  const [gameWord, setGameWord] = useLocalStorage("gameWord", getRandomWord());
+  const [foundWords, setFoundWords] = useLocalStorage("foundWords", []);
+  const [won, setWon] = useLocalStorage("won", false);
 
   const [letters, setLetters] = useState(
     shuffle(gameWord.word.split(""), fixedLetter)
@@ -45,42 +26,11 @@ function App() {
 
   // display states
   const [showSettings, setShowSettings] = useState(false);
-
   const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme")
-      ? JSON.parse(localStorage.getItem("theme"))
-      : defaultDark
-      ? "dark"
-      : "light"
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    defaultDark ? "dark" : "light"
   );
-
-  // store words and guesses in local storage
-  useEffect(() => {
-    localStorage.removeItem("gameWord");
-    localStorage.setItem("gameWord", JSON.stringify(gameWord));
-  }, [gameWord]);
-
-  useEffect(() => {
-    localStorage.removeItem("foundWords");
-    localStorage.setItem("foundWords", JSON.stringify(foundWords));
-  }, [foundWords]);
-
-  useEffect(() => {
-    localStorage.removeItem("playing");
-    localStorage.setItem("playing", playing);
-  }, [playing]);
-
-  useEffect(() => {
-    localStorage.removeItem("theme");
-    localStorage.setItem("theme", JSON.stringify(theme));
-  }, [theme]);
-
-  useEffect(() => {
-    localStorage.removeItem("won");
-    localStorage.setItem("won", won);
-  }, [won]);
 
   useEffect(() => {
     setLetters(shuffle(gameWord.word.split(""), fixedLetter));
