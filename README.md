@@ -1,9 +1,13 @@
-# Spelling Bee
+# Nigel Plebes
 
-A word guessing game, loosely on the [NYT's Spelling Bee](https://www.nytimes.com/puzzles/spelling-bee).
+A word guessing game, inspired by the [NYT's Spelling Bee](https://www.nytimes.com/puzzles/spelling-bee).
 
-You can play the game here: [https://nigel-plebes.netlify.app/](https://nigel-plebes.netlify.app/)
+Find as many words as you can with the 9 letters on screen. If you find the 9 letter word, you win the round!
 
-## Who's Nigel Plebes?
+This app was built using React. You can play it here: [https://nigel-plebes.netlify.app/](https://nigel-plebes.netlify.app/)
 
-You'll figure it out...
+Note: I'm currently using a limited word list. Please don't take it personally if it doesn't recognise one of your guesses. I'm working on a more robust back-end with a lot more words!
+
+## Who is Nigel Plebes?
+
+You'll figure it out... ;)
