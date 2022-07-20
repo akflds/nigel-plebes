@@ -6,7 +6,7 @@ Find as many words as you can with the 9 letters on screen. If you find the 9 le
 
 ## About
 
-This was built to practice using React and refresh my CSS knowledge.
+This was built to practice using React and CSS modules.
 
 The game currently has a fairly "opinionated" set of hardcoded words. Please don't take it personally if it doesn't recognise one of your guesses! I'm working on a more robust back-end with a lot more words.
 
