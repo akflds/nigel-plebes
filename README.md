@@ -1,6 +1,6 @@
 # Nigel Plebes
 
-A word guessing game, inspired by the [NYT's Spelling Bee](https://www.nytimes.com/puzzles/spelling-bee).
+A word guessing game, inspired by the [New York Times' Spelling Bee](https://www.nytimes.com/puzzles/spelling-bee).
 
 Find as many words as you can with the 9 letters on screen. If you find the 9 letter word, you win the round!
 
