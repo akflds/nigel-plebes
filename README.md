@@ -1,14 +1,39 @@
 # Nigel Plebes
 
-A word guessing game, inspired by the [New York Times' Spelling Bee](https://www.nytimes.com/puzzles/spelling-bee).
+A word guessing game, inspired by the [New York Times' Spelling Bee](https://www.nytimes.com/puzzles/spelling-bee), but without a paywall!
 
-Find as many words as you can with the 9 letters on screen. If you find the 9 letter word, you win the round! You can play it here: [https://nigel-plebes.netlify.app/](https://nigel-plebes.netlify.app/)
+The aim is to find as many 4-9 letter words as you can using the 9 letters shown on screen. If you find the 9 letter word, you win the round. If you get stuck, you can end the round early from within the Settings. You can also toggle "Easy Mode" which will display the number of remaining words. You can also toggle light/dark mode.
 
-## About
+The game is built using React and keeps track of your current guesses, and settings, using localStorage. 
 
-This was built to practice using React and CSS modules.
+You can play it here: [https://nigel-plebes.netlify.app/](https://nigel-plebes.netlify.app/). 
 
-The game currently has a fairly "opinionated" set of hardcoded words. Please don't take it personally if it doesn't recognise one of your guesses! I'm working on a more robust back-end with a lot more words.
+Note: Nigel has fairly strong opinions on what makes a valid word. Please don't take it personally if it doesn't recognise one of your guesses! I'm working on replacing the hardcoded word list with a more eloquent API.
+
+## Installation
+
+To run Nigel locally, first clone the respository.
+
+```
+git clone https://github.com/akflds/nigel-plebes.git
+cd nigel-plebes
+```
+
+Then install the necessary dependencies.
+
+```
+npm install
+```
+
+## Usage
+
+To launch a development build, run:
+
+```
+npm start
+```
+
+If all goes well, the game should be available at http://localhost:3000.
 
 ## Who is Nigel Plebes?
 
